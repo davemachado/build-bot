@@ -16,9 +16,9 @@ def comment_on_pull_request(pr_number, slug, token, comment):
 
 if __name__ == '__main__':
     GITHUB_API_URL = 'https://api.github.com'
+    TOKEN = os.environ.get('GH_TOKEN')
     PR_NUMBER = os.environ.get('TRAVIS_PULL_REQUEST')
     REPO_SLUG = os.environ.get('TRAVIS_REPO_SLUG')
-    TOKEN = os.environ.get('GH_TOKEN')
     MESSAGE = os.environ.get('BUILD_BOT_MSG', None)
 
     results = sys.stdin.read().strip()
