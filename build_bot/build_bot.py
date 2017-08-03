@@ -31,9 +31,13 @@ if __name__ == '__main__':
         """).format(build_results=results)
 
     if all([PR_NUMBER, REPO_SLUG, TOKEN]):
+        if PR_NUMBER == "false":
+            print('not a pull request, exiting')
+            sys.exit(0)
         if results:
             comment_on_pull_request(PR_NUMBER, REPO_SLUG, TOKEN, comment)
         elif MESSAGE:
             comment_on_pull_request(PR_NUMBER, REPO_SLUG, TOKEN, MESSAGE)
     else:
         print('Not all neccesery enviroment variables are set')
+        sys.exit(1)
